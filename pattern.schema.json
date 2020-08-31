@@ -11,28 +11,35 @@
     },
     "props": {
       "description": "A list of known properties, including functions, a pattern can have.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Name of the property.",
-          "type": "string"
+      "type": "array",
+      "items": {
+        "properties": {
+          "name": {
+            "description": "Name of the property.",
+            "type": "string"
+          }
         }
-      }
+	  },
+	  "uniqueItems": true
     },
     "attributes": {
       "description": "A list of known attributes a pattern can have. Attributes are usually string values used in properties, such as functions, and usually dependent on the context.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Name of the attribute.",
-          "type": "string"
-        },
-        "visibleInDOM": {
-          "description": "Will the attribute be left visible in DOM after parsing?",
-          "type": "boolean",
-          "default": true
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the attribute.",
+            "type": "string"
+          },
+          "visibleInDOM": {
+            "description": "Will the attribute be left visible in DOM after parsing?",
+            "type": "boolean",
+            "default": true
+          }
         }
-      }
+	  },
+	  "uniqueItems": true
     }
   },
   "required": ["name"]
