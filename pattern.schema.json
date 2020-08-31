@@ -1,7 +1,39 @@
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://github.com/luntta/aihio-patterns/blob/master/pattern.schema.json",
   "title": "Pattern",
   "description": "A component pattern in Aihio Design System",
-  "type": "object"
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "A readable unique identifier for a pattern.",
+      "type": "string"
+    },
+    "props": {
+      "description": "A list of known properties, including functions, a pattern can have.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the property.",
+          "type": "string"
+        }
+      }
+    },
+    "attributes": {
+      "description": "A list of known attributes a pattern can have. Attributes are usually string values used in properties, such as functions, and usually dependent on the context.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the attribute.",
+          "type": "string"
+        },
+        "visibleInDOM": {
+          "description": "Will the attribute be left visible in DOM after parsing?",
+          "type": "boolean",
+          "default": true
+        }
+      }
+    }
+  },
+  "required": ["name"]
 }
