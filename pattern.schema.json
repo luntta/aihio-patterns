@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "http://example.com/product.schema.json",
+  "$id": "https://github.com/luntta/aihio-patterns/blob/master/pattern.schema.json",
   "title": "Pattern",
   "description": "A component pattern in Aihio Design System",
   "type": "object"
