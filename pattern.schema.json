@@ -7,20 +7,80 @@
   "properties": {
     "name": {
       "description": "A readable unique identifier for a pattern.",
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "props": {
       "description": "A list of known properties, including functions, a pattern can have.",
       "type": "array",
       "items": {
+        "type": "object",
         "properties": {
           "name": {
             "description": "Name of the property.",
-            "type": "string"
+            "type": "string",
+            "minLength": 1
+          },
+          "propType": {
+            "description": "Type of the property.",
+            "type": "string",
+            "enum": [
+              "array",
+              "boolean",
+              "function",
+              "number",
+              "object",
+              "string"
+            ],
+            "default": "string"
+          },
+          "value": {
+            "description": "What is the value of the property?",
+            "type": [
+              "array",
+              "boolean",
+              "integer",
+              "null",
+              "number",
+              "object",
+              "string"
+            ],
+            "default": null
+          },
+          "descriptors": {
+            "description": "Want to override default descriptor values?",
+            "type": "object",
+            "properties": {
+              "configurable": {
+                "description": "Is the property configurable?",
+                "type": "boolean",
+                "default": false
+              },
+              "enumerable": {
+                "description": "Is the property enumerable?",
+                "type": "boolean",
+                "default": false
+              },
+              "writable": {
+                "description": "Is the property writable?",
+                "type": "boolean",
+                "default": false
+              },
+              "getter": {
+                "description": "Does the property have a getter function? Defaults to false, which doesn't create an empty getter for the pattern.",
+                "type": "boolean",
+                "default": false
+              },
+              "setter": {
+                "description": "Does the property have a setter function? Defaults to false, which doesn't create an empty setter for the pattern.",
+                "type": "boolean",
+                "default": false
+              }
+            }
           }
         }
-	  },
-	  "uniqueItems": true
+      },
+      "uniqueItems": true
     },
     "attributes": {
       "description": "A list of known attributes a pattern can have. Attributes are usually string values used in properties, such as functions, and usually dependent on the context.",
@@ -30,7 +90,25 @@
         "properties": {
           "name": {
             "description": "Name of the attribute.",
-            "type": "string"
+            "type": "string",
+            "minLength": 1
+          },
+          "values": {
+            "description": "A list of accepted values for the attribute.",
+            "type": "array",
+            "items": {
+              "type": [
+                "array",
+                "boolean",
+                "integer",
+                "null",
+                "number",
+                "object",
+                "string"
+              ],
+              "minLength": 1
+            },
+            "uniqueItems": true
           },
           "visibleInDOM": {
             "description": "Will the attribute be left visible in DOM after parsing?",
@@ -38,8 +116,8 @@
             "default": true
           }
         }
-	  },
-	  "uniqueItems": true
+      },
+      "uniqueItems": true
     }
   },
   "required": ["name"]
